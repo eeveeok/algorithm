@@ -14,7 +14,6 @@ def solution(bridge_length, weight, truck_weights):
             cur_weights -= enter_info.pop(0)[0]
         
         if cur_weights + w <= weight:
-            print(time)
             enter_info.append((w, time))
             cur_weights += w
             truck_weights.pop(0)
