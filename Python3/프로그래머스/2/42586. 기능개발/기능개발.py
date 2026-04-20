@@ -12,7 +12,6 @@ def solution(progresses, speeds):
             if completed[i]:
                 if is_prev_all_cplt and dayily_cplt > 0:
                     dayily_cplt += 1
-                    print(i, dayily_cplt)
                 continue
             
             progresses[i] += speeds[i]
