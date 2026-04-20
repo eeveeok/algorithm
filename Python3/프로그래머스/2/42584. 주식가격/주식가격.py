@@ -2,14 +2,13 @@ def solution(prices):
     answer = []
     
     for i in range(len(prices) - 1):
-        secs = 0
         for j in range(i+1, len(prices)):
-            secs += 1
             if prices[i] > prices[j]:
-                answer.append(secs)
+                answer.append(j - i)
                 break
-            elif j == len(prices) - 1:
-                answer.append(secs)
+                
+            if j == len(prices) - 1:
+                answer.append(j - i)
     
-    answer += [0]
+    answer.append(0)
     return answer
