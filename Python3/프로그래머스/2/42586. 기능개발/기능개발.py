@@ -1,27 +1,23 @@
+import math
+
 def solution(progresses, speeds):
     answer = []
     
-    size = len(progresses)
-    completed = [False] * size
+    count = 0
+    max_day = 0
     
-    while any(x < 100 for x in progresses):
-        dayily_cplt = 0
-        for i in range(size):
-            is_prev_all_cplt = all(completed[:i])
-            
-            if completed[i]:
-                if is_prev_all_cplt and dayily_cplt > 0:
-                    dayily_cplt += 1
-                continue
-            
-            progresses[i] += speeds[i]
-            
-            if progresses[i] >= 100:
-                completed[i] = True
-                if is_prev_all_cplt:
-                    dayily_cplt += 1
+    for p, s in zip(progresses, speeds):
+        days = math.ceil((100 - p) / s)
         
-        if dayily_cplt > 0:
-            answer.append(dayily_cplt)
+        if count > 0 and days > max_day:
+            answer.append(count)
+            count = 0
+            max_day = 0
+        
+        count += 1
+        max_day = max(max_day, days);
+        
+    if count > 0:
+        answer.append(count)
         
     return answer
