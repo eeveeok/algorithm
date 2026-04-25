@@ -1,13 +1,9 @@
 def solution(participant, completion):
-    count = {}
+    participant.sort()
+    completion.sort()
     
-    for i, v in enumerate(participant):
-        count[v] = count.get(v, 0) + 1;
-        
-        if(i != len(participant)-1):
-            name = completion[i]
-            count[name] = count.get(name, 0) - 1;
+    for i, v in enumerate(completion):
+        if participant[i] != completion[i]:
+            return participant[i]
     
-    answer = [k for k, v in count.items() if v == 1][0]
-    
-    return answer
+    return participant[-1]
