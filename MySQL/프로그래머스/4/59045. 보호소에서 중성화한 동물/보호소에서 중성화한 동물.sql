@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+SELECT
+    ins.ANIMAL_ID,
+    ins.ANIMAL_TYPE,
+    ins.NAME
+FROM ANIMAL_INS AS ins
+JOIN ANIMAL_OUTS AS outs
+    ON outs.ANIMAL_ID = ins.ANIMAL_ID
+    AND outs.SEX_UPON_OUTCOME <> ins.SEX_UPON_INTAKE
+ORDER BY ins.ANIMAL_ID, ins.ANIMAL_TYPE, ins.SEX_UPON_INTAKE
